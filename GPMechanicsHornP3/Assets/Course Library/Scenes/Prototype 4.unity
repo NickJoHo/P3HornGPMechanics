@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c096d6bc8d9c914b8282b0b69cdada8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 3699220913031454835, guid: 83dfc5530e0b30040b82ae98be5f7343, type: 3}
 --- !u!4 &404849001
 Transform:
   m_ObjectHideFlags: 0
@@ -830,9 +830,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1262881b9cc7f1e428b4271b160c9839, type: 3}
+  m_Resource: {fileID: 8300000, guid: dc9ba3b216c1b394787f4a38a013de13, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

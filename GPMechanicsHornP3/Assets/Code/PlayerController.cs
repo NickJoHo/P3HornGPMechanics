@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup = false; 
     private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
-    private float powerupDuration;
+    public float powerupDuration = 7.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+        if (powerupIndicator != null)
+            powerupIndicator.SetActive(false); // hide indicator at spawn
     }
 
     // Update is called once per frame
@@ -24,7 +26,8 @@ public class PlayerController : MonoBehaviour
     {
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
-        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+        if (powerupIndicator != null)
+            powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,16 +37,18 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
-            powerupIndicator.SetActive(true);
+            if (powerupIndicator != null)
+                powerupIndicator.SetActive(true);
         }       
     }
 
-    IEnumerator PowerupCountdownRoutine()
+    IEnumerator PowerupCountdownRoutine()   
     {
         yield return new WaitForSeconds(powerupDuration);
         hasPowerup = false;
         // Debug.Log("Powerup has expired");
-        powerupIndicator.SetActive(false);
+        if (powerupIndicator != null)
+            powerupIndicator.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speedRange = 9.0f;
+    public float speed = 5.0f; // Added this line to define 'speed'
     private Rigidbody enemyRb;
     private GameObject player;
     public int enemyCount;

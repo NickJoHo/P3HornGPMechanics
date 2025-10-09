@@ -28,11 +28,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
-        if (powerupIndicator != null)
-            powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
-        if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
+        float forwardInput = Input.GetAxis("Vertical"); playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0); if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
         {
             LaunchRockets();
 
@@ -80,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach (var enemy in FindObjectsOfType<Enemy>())
         {
-            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
+            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity); 
             tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
         }
     }
